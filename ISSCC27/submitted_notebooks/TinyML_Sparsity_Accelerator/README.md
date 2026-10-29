@@ -30,34 +30,34 @@ We propose a **hardware-software co-designed TinyML inference engine** implement
 The top-level accelerator (`top.v`) integrates seven synthesizable submodules:
 
 ```
-                          ┌────────────────────────┐
-                          │   Host / Memory Bus    │
-                          └───────────┬────────────┘
-                                      │ wr_en, act_in, wt_in
-                                      ▼
-                        ┌────────────────────────────┐
-                        │     dual_port_buffer       │
-                        │   (16 x INT8 Act & Wt)     │
-                        └─────────────┬──────────────┘
-                                      │ rd_addr (0..15)
-                   ┌──────────────────┴──────────────────┐
-                   ▼                                     ▼
-        ┌─────────────────────┐               ┌─────────────────────┐
-        │    zero_detector    │               │  Pipelined Multiplier│
-        │ (act==0 || wt==0)   │               │   mac.v (8-bit signed)│
-        └──────────┬──────────┘               └──────────┬──────────┘
-                   │ is_zero                             │ prod (16-bit)
-                   ▼                                     │
-        ┌─────────────────────┐                          ▼
-        │   cost_estimator    │               ┌─────────────────────┐
-        │  & mode_selector    │               │     accumulator     │
-        └──────────┬──────────┘               │   (32-bit signed)   │
-                   │ mode_latched                        └──────────┬──────────┘
-                   ▼                                                ▼
-        ┌─────────────────────┐                               result[31:0]
-        │   FSM Controller    │──── mac_en, acc_en (pipe) ──────────┘
-        │ (IDLE/SCAN/EVAL/COMP)
-        └─────────────────────┘
+                          +------------------------+
+                          |   Host / Memory Bus    |
+                          +-----------+------------+
+                                      | wr_en, act_in, wt_in
+                                      v
+                        +----------------------------+
+                        |     dual_port_buffer       |
+                        |   (16 x INT8 Act & Wt)     |
+                        +-------------+--------------+
+                                      | rd_addr (0..15)
+                   +------------------+------------------+
+                   v                                     v
+        +---------------------+               +---------------------+
+        |    zero_detector    |               |  Pipelined Multiplier|
+        | (act==0 || wt==0)   |               |   mac.v (8-bit signed)
+        +----------+----------+               +----------+----------+
+                   | is_zero                             | prod (16-bit)
+                   v                                     |
+        +---------------------+                          v
+        |   cost_estimator    |               +---------------------+
+        |  & mode_selector    |               |     accumulator     |
+        +----------+----------+               |   (32-bit signed)   |
+                   | mode_latched                        +----------+----------+
+                   v                                                v
+        +---------------------+                               result[31:0]
+        |   FSM Controller    |----> mac_en, acc_en (pipe) ----------+
+        | (IDLE/SCAN/EVAL/COMP)
+        +---------------------+
 ```
 
 ### Module Breakdown:
