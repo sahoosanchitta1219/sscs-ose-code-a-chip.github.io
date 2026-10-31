@@ -340,10 +340,10 @@ TinyML_Sparsity_Accelerator/
 - **Lead Contact & Corresponding Author:** **Sanchitta Sahoo** (`sahoosanchitta@gmail.com`)
 
 ### Team Members:
-1. **Sanchitta Sahoo** (Undergraduate Student, Team Lead) - Dept. of Electronics and Communication Engineering (ECE), Silicon University, Bhubaneswar, Odisha, India  
+1. **Sanchitta Sahoo** (Undergraduate Student) - Dept. of Electronics and Communication Engineering (ECE), Silicon University, Bhubaneswar, Odisha, India  
    *Email:* [sahoosanchitta@gmail.com](mailto:sahoosanchitta@gmail.com)
 2. **R Shahishnu Rahul** (Undergraduate Student) - Dept. of Electronics and Communication Engineering (ECE), SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
-3. **Sree Mathesh K** (Undergraduate Student) - Dept. of Electronics and Communication Engineering (ECE), SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
-4. **Viji H.** (Undergraduate Student) - Dept. of Electronics and Communication Engineering (ECE), SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
+3. **Sree Mathesh K** (Postgraduate Student) - Dept. of Electronics and Communication Engineering (ECE), SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
+4. **Viji H.** (Postgraduate Student) - Dept. of Electronics and Communication Engineering (ECE), SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
 5. **Dr. M. Sivappriya** (Faculty Advisor, IEEE Member) - Assistant Professor, Dept. of Networking and Communications, SRM Institute of Science and Technology, Chennai, Tamil Nadu, India
 
