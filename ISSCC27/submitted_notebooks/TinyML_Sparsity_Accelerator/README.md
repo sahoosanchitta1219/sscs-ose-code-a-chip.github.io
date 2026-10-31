@@ -21,7 +21,7 @@ We propose a **hardware-software co-designed TinyML inference engine** implement
 2. **Analytical Dynamic Break-Even Model:** An on-chip cost estimator dynamically evaluates:
    - $\text{Cost}_{\text{dense}} = 16 \times 10 = 160\text{ energy units}$
    - $\text{Cost}_{\text{sparse}} = (16 - Z) \times 12 + 25\text{ energy units}$
-   - $\text{Condition for Sparse Mode: } \text{Cost}_{\text{sparse}} < \text{Cost}_{\text{dense}} \iff (16 - Z) \times 12 + 25 < 160 \iff Z \ge 5$
+   - **Sparse Mode engages when** $(16 - Z) \times 12 + 25 < 160$, which simplifies to $Z \ge 5$ (i.e., sparsity $\ge 31.25\%$)
    
    **Decision Criterion:**
    - If zero count $Z \ge 5$ (sparsity $\ge 31.25\%$), the engine automatically engages **Sparse Mode**, skipping zero MAC cycles.
